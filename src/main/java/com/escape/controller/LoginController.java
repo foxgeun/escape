@@ -1,0 +1,76 @@
+package com.escape.controller;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.escape.Service.MemberService;
+import com.escape.dto.MemberFormDto;
+import com.escape.entity.Member;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class LoginController {
+	
+	private final MemberService memberService;
+	private final PasswordEncoder passwordEncoder;
+	
+	
+	//로그인화면
+	@GetMapping(value = "/login")
+	public String login() {
+		return "login/login";
+	}
+	
+	//로그인 실패했을때
+	@GetMapping(value="/login/error")
+	public String loginError(Model model) {
+		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+		return "login/login";
+	}
+	
+	
+	//회원가입 화면
+	@GetMapping(value = "/join")
+	public String join(Model model) {
+		model.addAttribute("memberFormDto", new MemberFormDto());
+		return "login/join";
+	}
+	
+	//회원가입
+	@PostMapping(value = "/join")
+	public String memberForm(@Valid MemberFormDto memberFormDto,
+			BindingResult bindingResult, Model model) {
+		//@valid: 유효성을 검증하려는 객체 앞에 붙인다.
+		//BindingResult: 유효성 검증 후의 결과가 들어있다.
+	
+		if(bindingResult.hasErrors()) {
+		
+			//에러가 있다면 회원가입 페이지로 이동
+			return "login/join";
+		}
+		
+		try {
+			//MemberFormDto -> Member Entity, 비밀번호 암호화
+			Member member = Member.createMember(memberFormDto, passwordEncoder);
+			memberService.saveMember(member);
+			
+		} catch (IllegalStateException e) {
+			model.addAttribute("errorMessage", e.getMessage());
+			
+			return "login/join";
+		}
+	
+		return "redirect:/";
+	}
+	
+
+	
+	
+}
