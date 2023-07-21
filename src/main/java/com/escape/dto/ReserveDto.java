@@ -1,6 +1,8 @@
 package com.escape.dto;
 
 
+import java.util.Date;
+
 import org.modelmapper.ModelMapper;
 
 import com.escape.entity.Member;
@@ -20,19 +22,20 @@ public class ReserveDto {
 	
 	private long id;
 	
-	private String Time;
+	private String time;
 
 	@NotNull(message = "상품 아이디는 필수 입력 값입니다.")
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "theme_id")
-	private Theme theme; 
+
+	private String themeName; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
 	private Member member;
 		
+	private String date;
+	
 	private int cnt;
 	
 	private int cal;

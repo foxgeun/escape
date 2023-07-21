@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+
+<div layout:fragment="content">
+
+ 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To Secret Code</h6>
+                  <h4><em>Reservation</em> Our Popular Theme</h4>
+                  <div class="main-button">
+                    <a href="/streams">Reservation Now</a>
+                 <form role="form" action="/" method="post" enctype="multipart/form-data"  th:object="${Theme}"
+							 name="theme">
+				<div class="col-md-12">
+				<th:block th:each="img, status: ${searchthemeImgIdList}">
+							<label th:text="${img.Name} + '.jpg'" for="formFile" class="form-label"></label>
+  							<input class="form-control" type="file" id="themeImgFile" name="themeImgFile">
+				</th:block>
+				</div>
+				<th:block th:each="theme, status: ${searchthemeIdList}">
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">테마이름</span>
+ 					<input type="text" th:value="${theme.name}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">공포도</span>
+ 					<input type="text" th:value="${theme.horror}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">가격</span>
+ 					<input type="text" th:value="${theme.price}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">난이도</span>
+ 					<input type="text" th:value="${theme.level}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">추천인원</span>
+ 					<input type="text" th:value="${theme.people}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3">
+  					<span class="input-group-text" id="inputGroup-sizing-default">테마 내용</span>
+ 					<textarea th:text="${theme.detail}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></textarea>
+				</div>
+				</th:block>	
+ 
+
+					<div class="col-md-12 d-flex justify-content-center">
+				<button type="submit"  class="btn btn-primary mb-3" style="width:150px;">상품등록</button>
+					</div>
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+				</form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Gaming Library Start ***** -->
+
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+ </div>
+
+</html>

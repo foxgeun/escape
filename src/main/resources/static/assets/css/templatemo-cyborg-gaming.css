@@ -1702,6 +1702,10 @@ body {
   }
 }
 
+.form-control{
+	background-color: white;
+}
+
 @media (max-width: 992px) {
   .background-header {
   display: inline-block;

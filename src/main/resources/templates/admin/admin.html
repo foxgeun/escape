@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+<div layout:fragment="content">
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Featured Games Start ***** -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="featured-games header-text">
+                <div class="heading-section">
+                  <h4><em >Featured</em> Games</h4>
+                </div>
+                <div class="owl-features owl-carousel">
+                
+                
+                  <div class="item" th:each="img, status: ${imgList}">
+                    <div class="thumb">
+                     <a > <img th:src="${img.ImgUrl}"></a>
+                      <div class="hover-effect">
+                        <h6 >2.4K Played</h6>
+                      </div>
+                    </div>
+                    <h4 th:text="${img.name}"><br><span >249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> </li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                
+                
+                  
+                 
+        
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Featured Games End ***** -->
+
+
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+</html>

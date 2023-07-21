@@ -1,6 +1,8 @@
 package com.escape.entity;
 
 
+import java.util.Date;
+
 import com.escape.constant.ThemeSellStatus;
 
 import jakarta.persistence.Column;
@@ -32,16 +34,21 @@ public class Theme {
 	
 	private int price;
 	
+	@Column(nullable = false, columnDefinition = "longtext")
 	private String detail;
 	
 	@Enumerated(EnumType.STRING)
 	private ThemeSellStatus themeSellStatus;
+	
+
 	
 	private int level;
 	
 	private int horror;
 	
 	private String people;
+	
+	private String imgUrl;
 	
 	
 	

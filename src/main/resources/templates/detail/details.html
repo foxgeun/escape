@@ -12,16 +12,17 @@
         <div class="page-content">
 
           <!-- ***** Featured Start ***** -->
+	 <th:block th:each="img, status: ${searchthemeImgIdList}">
           <div class="row">
             <div class="col-lg-12">
               <div class="feature-banner header-text">
                 <div class="row">
                   <div class="col-lg-4">
-                    <img src="assets/images/eddy.jpg" alt="" style="border-radius: 23px;">
+                    <img th:src="${img.imgUrl}" alt="" style="border-radius: 23px;">
                   </div>
                   <div class="col-lg-8">
                     <div class="thumb">
-                      <img src="assets/images/memory.jpg" alt="" style="border-radius: 23px;">
+                  
                       <a href="https://www.youtube.com/watch?v=s9tuzYh1M1Q" target="_blank"><i class="fa fa-play"></i></a>
                     </div>
                   </div>
@@ -29,13 +30,15 @@
               </div>
             </div>
           </div>
+           </th:block>
           <!-- ***** Featured End ***** -->
 
           <!-- ***** Details Start ***** -->
+          <th:block th:each="theme, status: ${searchthemeIdList}">
           <div class="game-details">
             <div class="row">
               <div class="col-lg-12">
-                <h2>Details</h2>
+                <h2 >Details</h2>
               </div>
               <div class="col-lg-12">
                 <div class="content">
@@ -43,7 +46,7 @@
                     <div class="col-lg-6">
                       <div class="left-info">
                         <div class="left">
-                          <h4>Film by Eddy</h4>
+                          <h4 th:text="${theme.name}">Film by Eddy</h4>
                           <span>Memory Company</span>
                         </div>
                         <ul>
@@ -72,7 +75,7 @@
                       <img src="assets/images/memory3.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
                     </div>
                     <div class="col-lg-12">
-                      <p>Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout. You can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com and thank you for supporting. If you want to get the PSD source files, please contact us. Lorem ipsum dolor sit consectetur es dispic dipiscingei elit, sed doers eiusmod lisum hored tempor.</p>
+                      <pre style="color:white">[[${theme.detail}]]</pre>
                     </div>
                     <div class="col-lg-12">
                       <div class="main-border-button">
@@ -119,7 +122,7 @@
             </div>
           </div>
           <!-- ***** Other End ***** -->
-
+		
         </div>
       </div>
     </div>

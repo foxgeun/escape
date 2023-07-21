@@ -1,7 +1,5 @@
 package com.escape.entity;
 
-import java.util.List;
-
 import com.escape.dto.ReserveDto;
 
 import jakarta.persistence.*;
@@ -19,9 +17,8 @@ public class Reserve extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.AUTO) //기본키를 자동으로 생성해주는 전략 사용
 	private long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "theme_id")
-	private Theme theme; 
+
+	private String themeName; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
@@ -29,7 +26,9 @@ public class Reserve extends BaseEntity{
 	
 	private String name;
 	
-	private String Time;
+	private String time;
+	
+	private String date;
 	
 	private int price;
 	

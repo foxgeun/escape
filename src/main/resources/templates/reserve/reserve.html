@@ -19,14 +19,16 @@
           <div class="live-stream">
            
             <div class="row">
+             <th:block th:each="theme, status: ${searchthemeIdList}">
               <div class="col-lg-9 col-sm-9">
                 <div class="item">
                   <div class="thumb">
-                    <img src="assets/images/us.jpg" alt="">
+                    <img th:src="${theme.imgUrl}" th:alt="${theme.name}">
+                  
                     <div class="hover-effect">
                       <div class="content">
                         <div class="live">
-                          <a>us</a>
+                          <a th:text="${theme.name}">us</a>
                         </div>
                         <ul>
                           <li><a><i class="fa fa-eye"></i> 1.2K</a></li>
@@ -40,6 +42,7 @@
                   </div> 
                 </div>
               </div>
+                    </th:block>
              
 
               
@@ -60,16 +63,26 @@
                 </div>
                 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">Time</span>
- <input type="text" th:field="*{Time}" id="test" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ <input type="text" th:field="*{time}" id="test" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 					<div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-  <input type="text" th:field="*{name}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <input type="text" th:field="*{name}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text"  id="inputGroup-sizing-default">theme</span>
-  <input type="text" th:field="*{theme}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <input type="text" th:field="*{themeName}"id="the" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text"  id="inputGroup-sizing-default">date</span>
+  <input type="date" th:field="*{date}" id="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text"  id="inputGroup-sizing-default">Phone</span>
+  <input type="text" th:field="*{cal}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 
 <div class="input-group mb-3">
@@ -94,19 +107,20 @@
 <th:block layout:fragment="script">
 
 <script>
-const receivedData = location.href.split('?')[1];
-
+const receivedData = location.href.split('/')[4];
+const receivedData2 = location.href.split('/')[5];
+const receivedData3 = location.href.split('/')[6];
 
 // 전달받은 데이터가 한글일 경우
 
 
 const res = decodeURI(receivedData);
-
-
+const the = decodeURI(receivedData2);
+const date = decodeURI(receivedData3);
 
 document.getElementById("test").value = res;
-
-
+document.getElementById("the").value = the;
+document.getElementById("date").value = date;
 
 
 

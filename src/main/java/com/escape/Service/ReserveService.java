@@ -27,11 +27,12 @@ public class ReserveService {
 		
 		
 		Reserve reserve = reserveDto.createReserve(member);
-		
-	
-		reserveRepository.updateres(reserve.getName(),reserve.getCnt(), email,reserve.getUpdateTime(), reserve.getTime());
+		reserveRepository.save(reserve);
 		return reserve.getId();
+		
 	}
+	
+
 	
 	
 	public List<Reserve> findres(String email) throws Exception{
@@ -42,6 +43,13 @@ public class ReserveService {
 		return reserveRepository.getresList();
 	}
 	
+	public List<Reserve> getbtnList() {
+		return reserveRepository.getbtnList();
+	}
+	
+	public Reserve getwpqkfList(String date, String time) {
+		return reserveRepository.getwpqkfList(date, time);
+	}
 	
 	
 

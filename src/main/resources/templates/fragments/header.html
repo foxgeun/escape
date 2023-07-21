@@ -40,10 +40,9 @@
                     <ul class="nav">
                         <li><a href="/" class="active">Home</a></li>
                         <li><a href="/browse">Browse</a></li>
-                        <li><a href="/details">Details</a></li>
-                        <li><a href="/streams">Streams</a></li>
-                        <li><a class="log" href="/login"  sec:authorize="isAnonymous()">login</a></li>
-                        <li><a href="/profile" sec:authorize="isAuthenticated()">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <li><a id="sta" href="/streams">Streams</a></li>
+                        <li><a class="log" href="/login" sec:authorize="isAnonymous()"  >login</a></li>
+                        <li><a href="/profile" sec:authorize="isAuthenticated()"   >Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -53,8 +52,20 @@
             </div>
         </div>
     </div>
+<script>
+
+
+
+ddd();
+
+function ddd(){
+	const day = new Date().toISOString().substring(0, 10);
+	document.getElementById("sta").setAttribute("href", "/streams/" + day); 
+
+}
+
+</script>
   </header>
   <!-- ***** Header Area End ***** -->
     </div>
-
 </html>
