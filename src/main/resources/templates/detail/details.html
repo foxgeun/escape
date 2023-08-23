@@ -22,8 +22,13 @@
                   </div>
                   <div class="col-lg-8">
                     <div class="thumb">
-                  
-                      <a href="https://www.youtube.com/watch?v=s9tuzYh1M1Q" target="_blank"><i class="fa fa-play"></i></a>
+                    	<div class="com">
+                    	<h1 style="margin:10px">Review</h1>
+                    	</div>
+                    	 <th:block th:each="cmt, status: ${comment}">
+                    <p>[[${cmt.score}]]★ [[${cmt.createBy}]]: [[${cmt.cmt}]]</p>
+					</th:block>
+                     
                     </div>
                   </div>
                 </div>
@@ -66,21 +71,19 @@
                       </div>
                     </div>
                     <div class="col-lg-4">
-                      <img src="assets/images/memory1.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                      <img src="/assets/images/memory1.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
                     </div>
                     <div class="col-lg-4">
-                      <img src="assets/images/memory2.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                      <img src="/assets/images/memory2.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
                     </div>
                     <div class="col-lg-4">
-                      <img src="assets/images/memory3.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                      <img src="/assets/images/memory3.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
                     </div>
                     <div class="col-lg-12">
                       <pre style="color:white">[[${theme.detail}]]</pre>
                     </div>
                     <div class="col-lg-12">
-                      <div class="main-border-button">
-                        <a href="#">Reservation Now!</a>
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -92,31 +95,29 @@
           <!-- ***** Other Start ***** -->
           <div class="other-games">
             <div class="row">
-              <div class="col-lg-12">
+			              <div class="top-streamers">
                 <div class="heading-section">
-                  <h4><em>Other Related</em> Theme</h4>
+                  <h4><em></em> Reservation</h4>
+                  
                 </div>
+                <div class="date_div" >
+				<input id="theme_id" th:value="${theme.id}" style="display:none">
+    
+
+    <input id="dayday" type="date" th:value="${date}"  max="2023-08-11" style="color:black">
+       </div>
+                    
+                    
+   						               	<div class="wrap">
+	<a class="button" th:if="${time11}" th:href="'/reserve/' +'11:00' +'/'+ ${theme.name} +'/'+ ${date}" >11:00</a>
+	<a class="button" th:if="${time12}" th:href="'/reserve/' +'12:00' +'/'+ ${theme.name} +'/'+ ${date}">12:00</a>
+	<a class="button" th:if="${time13}" th:href="'/reserve/' +'13:00' +'/'+ ${theme.name} +'/'+ ${date}">13:00</a>
+											
+											</div>
+ 
+
               </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/steve.jpg" alt="" class="templatemo-item">
-                  <h4>Film by steve</h4><span>Memory Company</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/us.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Would you like</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-              </div>
+
              
              
             </div>
@@ -130,5 +131,33 @@
   
 
 </div>
+<th:block layout:fragment="script">
+
+<script>
+
+
+const input = document.getElementById("dayday");
+
+
+
+
+document.getElementById('dayday').min = new Date().toISOString().substring(0, 10);
+const theme_id = document.getElementById('theme_id').value
+
+
+input.addEventListener("input", function(e) {
+    console.log(e.target.value); // 값이 바뀔때마다 찍힘
+    history.replaceState(null,null,'/details/'+ theme_id +'/' +e.target.value); 
+    location.reload();
+    document.getElementById("test").setAttribute("href", teval+"/" +e.target.value);
+    
+})
+
+
+
+
+</script>
+
+ </th:block>
 
 </html>

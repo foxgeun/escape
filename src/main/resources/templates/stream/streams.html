@@ -138,28 +138,26 @@
 
     
     <label>min & max</label>
-    <input id="dayday" type="date" th:value="${date}"  max="2023-08-11" style="color:black">
+  
        </div>
     <ul>
-                    <th:block th:each="theme, status: ${themeList}">
+
                   <li>
                     <span>01</span>
-                    <img th:src="${theme.imgUrl}" alt="" style="max-width: 56px; border-radius: 50%; margin-right: 15px;">
-                    <a th:text="${theme.name}" th:href="'/details/'+${theme.id}"><i class="fa fa-check"></i> film by eddy</a>
+                   
+                    <a><i class="fa fa-check"></i> film by eddy</a>
                     <div class="main-button">
                     
                     
                     
-                    <th:block th:each="ss, status: ${AA}">
+
                     
-                      <a id="test"  th:unless="${not #strings.isEmpty(ss)}"   th:href="'/reserve/' +'11:00' +'/'+ ${theme.name} +'/'+ ${date}">11:00</a>   
+                      <a>11:00</a>   
    
  
-                      </th:block>
-
 						 </div>
                   </li>
-                      </th:block>
+ 
                    
                   
                 </ul>

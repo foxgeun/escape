@@ -25,7 +25,7 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="/" class="logo">
-                        <img src="assets/images/cccc.png" alt="" style="margin-top:20px">
+                        <img src="/assets/images/cccc.png" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Search End ***** -->
@@ -37,12 +37,17 @@
                     </div>
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
+                    
                     <ul class="nav">
+                    
                         <li><a href="/" class="active">Home</a></li>
                         <li><a href="/browse">Browse</a></li>
-                        <li><a id="sta" href="/streams">Streams</a></li>
-                        <li><a class="log" href="/login" sec:authorize="isAnonymous()"  >login</a></li>
-                        <li><a href="/profile" sec:authorize="isAuthenticated()"   >Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+
+						<li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/insert">테마등록</a></li>
+                   		<li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin">테마관리</a></li>
+                
+                        <li><a class="log" href="/login" sec:authorize="isAnonymous()">login</a></li>
+                        <li><a href="/profile" sec:authorize="isAuthenticated()" >Profile <img src="/assets/images/profile-header.jpg" alt=""></a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -52,16 +57,14 @@
             </div>
         </div>
     </div>
-<script>
+	<script th:inline="javascript">
 
 
 
-ddd();
+var errorMessage = [[${errorMessage}]];
 
-function ddd(){
-	const day = new Date().toISOString().substring(0, 10);
-	document.getElementById("sta").setAttribute("href", "/streams/" + day); 
-
+if(errorMessage != null){
+	alert(errorMessage);
 }
 
 </script>

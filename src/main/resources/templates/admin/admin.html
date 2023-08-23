@@ -23,16 +23,16 @@
                 
                   <div class="item" th:each="img, status: ${imgList}">
                     <div class="thumb">
-                     <a > <img th:src="${img.ImgUrl}"></a>
-                      <div class="hover-effect">
-                        <h6 >2.4K Played</h6>
-                      </div>
+                     <a> <img th:src="${img.ImgUrl}"></a>
+
                     </div>
                     <h4 th:text="${img.name}"><br><span >249K Downloads</span></h4>
                     <ul>
-                      <li><i class="fa fa-star"></i> </li>
-                      <li><i class="fa fa-download"></i> 2.3M</li>
+                      <li><i class="fa fa-star"></i> [[${img.level}]]</li>
+
                     </ul>
+                    <a type="button" th:href="'/admin/update/'+${img.id}" class="btn btn-primary">수정</a>
+					<a type="button" th:href="'/admin/delete/'+${img.id}" class="btn btn-secondary">삭제</a>
                   </div>
                 
                 
@@ -40,6 +40,37 @@
                  
         
                 </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            
+            <div class="col-lg-12">
+              <div class="top-streamers">
+                <div class="heading-section">
+                  <h4><em></em> Reservation</h4>
+                  
+                </div>
+    <ul>
+				<th:block th:each="res, status: ${reserve}">
+                  <li>
+                    <span>아이디:&nbsp  [[${res.id}]]</span>
+                    <span>이름:&nbsp  [[${res.name}]]</span>
+                    <span>날짜:&nbsp  [[${res.date}]]</span>
+                    <span>시간:&nbsp  [[${res.time}]]</span>
+                    <span>전화번호:&nbsp  [[${res.cal}]]</span>
+                    <span>테마이름:&nbsp  [[${res.themeName}]]</span>
+                    <span>인원:&nbsp  [[${res.cnt}]]명</span>
+
+					<a type="button" th:href="'/admin/delete/'+${res.id}" id="btn_sub" class="btn btn-secondary">예약삭제</a>
+
+                  </li>
+ 				</th:block>
+                   
+                  
+                </ul>
+                
               </div>
             </div>
           </div>

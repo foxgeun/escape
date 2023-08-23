@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout2}">
+
+
+
+<div layout:fragment="content">
+
+ 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="page-content">
+
+       
+
+          <!-- ***** Live Stream Start ***** -->
+          <div class="live-stream">
+           
+            <div class="row">
+             <th:block th:each="theme, status: ${searchthemeIdList}">
+              <div class="col-lg-9 col-sm-9">
+                <div class="item">
+                  <div class="thumb">
+                    <img th:src="${theme.imgUrl}" th:alt="${theme.name}">
+                  
+                    <div class="hover-effect">
+                      <div class="content">
+                        <div class="live">
+                          <a th:text="${theme.name}">us</a>
+                        </div>
+                        <ul>
+                          <li><a><i class="fa fa-eye"></i> 1.2K</a></li>
+                          <li><a><i class="fa fa-gamepad"></i> CS-GO</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="down-content">
+
+                  </div> 
+                </div>
+              </div>
+                    </th:block>
+             
+
+              
+         
+             
+              
+            </div>
+          </div>
+          <!-- ***** Live Stream End ***** -->
+          
+          <!-- ***** Featured Games Start ***** -->
+          <div class="row">
+            
+            <div class="col-lg-12" >
+  	<th:block th:each="res, status: ${resList}">
+              <form class="top-streamers" th:action="'/resupdate/' + ${id}"  th:object="${Reserve}" name="Reserve" role="form" method="post" enctype="multipart/form-data" >
+                <div class="heading-section">
+                  <h4><em></em> Reservation</h4>
+                </div>
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Time</span>
+ <input type="text"  th:value="${res.time}" th:field="${Reserve.time}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+ <input type="text"  th:value="${res.date}" th:field="${Reserve.date}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+ <input type="text"  th:value="${res.name}" th:field="${Reserve.name}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Theme</span>
+ <input type="text"  th:value="${res.themeName}" th:field="${Reserve.themeName}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+
+
+
+	<button type="submit" class="btn btn-success">Success</button>
+
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+              </form>	
+</th:block>
+            </div>
+          </div>
+          <!-- ***** Featured Games End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+</html>

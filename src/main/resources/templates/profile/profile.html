@@ -62,13 +62,18 @@
               <th:block th:each="res, status: ${resList}">
               <div class="item">
                 <ul>
-                  <li><img src="assets/images/eddy.jpg" alt="" class="templatemo-item"></li>
+
                   <li><h4> 예약자명</h4><span th:text="${res.name}"></span></li>
                   <li><h4>인원</h4><span th:text="${res.cnt}"></span></li>
                   <li><h4>예약시간</h4><span th:text="${res.Time}"></span></li>
-                  <li><h4>Success</h4><span>X</span></li>
-                  <li><div class="main-border-button border-no-active"><a href="#">commented</a></div></li>
+
+
+                   <li style="display:flex"><div class="main-border-button" ><a th:href="'/comment/'+ ${res.themeName}" style="display:block !important;">comment</a></div>
+                   <div class="main-border-button" ><a th:href="'/resupdate/'+ ${res.id}" style="display:block !important;">수정</a></div>
+                   <div class="main-border-button" ><a th:href="'/resdelete/'+ ${res.id}" style="display:block !important;">삭제</a></div></li>
+                  
                 </ul>
+                
               </div>
 			</th:block>
 

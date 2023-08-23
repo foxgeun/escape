@@ -4,6 +4,7 @@ package com.escape.entity;
 import java.util.Date;
 
 import com.escape.constant.ThemeSellStatus;
+import com.escape.dto.ThemeFormDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -50,7 +51,15 @@ public class Theme {
 	
 	private String imgUrl;
 	
-	
+	public void updateTheme(Theme theme) {
+		this.name = theme.getName();
+		this.price = theme.getPrice();
+		this.detail = theme.getDetail();
+		this.level = theme.getLevel();
+		this.horror = theme.getHorror();
+		this.people = theme.getPeople();
+		this.imgUrl = theme.getImgUrl();
+	}
 	
 	
 	

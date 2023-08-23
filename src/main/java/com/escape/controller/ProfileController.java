@@ -34,8 +34,9 @@ public class ProfileController {
 		
 
 		List<Reserve> resList = reserveService.findres(principal.getName());	
-		
 		MemberFormDto memberFormDto = memberService.getMember(principal.getName());
+
+		
 		
 		model.addAttribute("resList", resList);
 		model.addAttribute("member" , memberFormDto);

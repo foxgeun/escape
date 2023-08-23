@@ -35,6 +35,17 @@ public class Reserve extends BaseEntity{
 	private int cnt;
 
 	private int cal;
+	
+	
+	public void updateReserve(Reserve reserve) {
+		
+		this.themeName = reserve.themeName;
+		this.time = reserve.time;
+		this.date = reserve.date;
+		this.name = reserve.name;
+		
+		
+	}
 
 	public static Reserve createReserve(ReserveDto reserveDto) {
 		

@@ -20,7 +20,11 @@ public class ThemeImgDto {
 	
 	private String imgUrl; 
 	
-	private String repimgYn; 
+	private int level;
+	
+	private int horror;
+	
+	private String name;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

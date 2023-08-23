@@ -8,15 +8,18 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.escape.dto.ReserveDto;
-
+import com.escape.dto.ThemeFormDto;
 import com.escape.entity.Member;
 
 import com.escape.entity.Theme;
 import com.escape.entity.ThemeImg;
 import com.escape.repository.MemberRepository;
-
+import com.escape.repository.ThemeImgRepository;
 import com.escape.repository.ThemeRepository;
+import com.escape.repository.TimeRepository;
+import com.shopmax.entity.Order;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -28,6 +31,8 @@ public class ThemeService {
 	private final MemberRepository memberRepository;
 	private final ThemeRepository themeRepository;
 	private final ThemeImgService themeImgService;
+	private final ThemeImgRepository thmeImgRepository;
+
 
 	
 	public void findres(ReserveDto reserveDto, String email) throws Exception{
@@ -50,6 +55,16 @@ public class ThemeService {
 		return themeRepository.updateList(id);
 	}
 	
+	public void updateTheme(Theme theme, int id) {
+		Theme theme1 = themeRepository.SearchthemeIdList4(id);
+		ThemeImg themeImg = thmeImgRepository.SearchthemeIdList2(id);
+		
+		themeImg.updateImg(theme);
+		theme1.updateTheme(theme);
+		
+		
+	}
+	
 	
 	public void saveImg(List<MultipartFile> themeImgFileList, Theme theme ) throws Exception {
 		
@@ -67,6 +82,30 @@ public class ThemeService {
 		
 		
 		
+	}
+	
+	public void updateImg(List<MultipartFile> themeImgFileList, Theme theme ) throws Exception {
+		
+		for(int i=0; i<themeImgFileList.size(); i++) {
+			ThemeImg themeImg = new ThemeImg();
+			themeImg.setImgName(themeImg.getImgName());
+			themeImgService.updateThemeImg(themeImg, themeImgFileList.get(i));
+			theme.setImgUrl(themeImg.getImgUrl());
+			
+			
+
+		}
+		
+		
+		
+	}
+	
+	public void deletetheme(int Id) {
+		List<Theme> order = themeRepository.SearchthemeIdList2(Id);
+		List<ThemeImg> orders = themeImgService.deleteImg(Id);
+            
+		themeRepository.deleteAll(order);		
+		thmeImgRepository.deleteAll(orders);
 	}
 	
 	

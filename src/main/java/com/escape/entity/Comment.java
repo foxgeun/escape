@@ -27,15 +27,10 @@ public class Comment extends BaseEntity{
 	
 	private String cmt;
 	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "theme_id")
-	private Theme theme; 
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member; 
+	private String theme;
 	
 	private int score;
+	
+	
 	
 }

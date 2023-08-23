@@ -21,7 +21,7 @@
                   <h4><em>Reservation</em> Our Popular Theme</h4>
                   <div class="main-button">
                     <a href="/streams">Reservation Now</a>
-                 <form role="form" action="/" method="post" enctype="multipart/form-data"  th:object="${Theme}"
+                 <form role="form" th:action="'/admin/update/' + ${updateid}" method="post" enctype="multipart/form-data"  th:object="${Theme}"
 							 name="theme">
 				<div class="col-md-12">
 				<th:block th:each="img, status: ${searchthemeImgIdList}">
@@ -32,28 +32,28 @@
 				<th:block th:each="theme, status: ${searchthemeIdList}">
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">테마이름</span>
- 					<input type="text" th:value="${theme.name}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ 					<input type="text" th:field="${theme.name}" th:value="${theme.name}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">공포도</span>
- 					<input type="text" th:value="${theme.horror}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ 					<input type="text" th:field="${theme.horror}" th:value="${theme.horror}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">가격</span>
- 					<input type="text" th:value="${theme.price}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ 					<input type="text" th:field="${theme.price}" th:value="${theme.price}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">난이도</span>
- 					<input type="text" th:value="${theme.level}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ 					<input type="text" th:field="${theme.level}" th:value="${theme.level}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">추천인원</span>
- 					<input type="text" th:value="${theme.people}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ 					<input type="text" th:field="${theme.people}" th:value="${theme.people}"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">테마 내용</span>
- 					<textarea th:text="${theme.detail}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></textarea>
+ 					<textarea th:field="${theme.detail}" th:text="${theme.detail}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></textarea>
 				</div>
 				</th:block>	
  

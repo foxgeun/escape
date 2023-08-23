@@ -40,10 +40,20 @@ public class ThemeImg extends BaseEntity{
 	private String imgUrl; //이미지 조회 경로
 	
 	public void updateThemeImg(String oriImgName, String imgName, String imgUrl) {
+		System.out.println(oriImgName+" " + imgName+" " + imgUrl + "sdkaksdmaknfakjsnkajngskjangkjansgkjangskjangkjan");
 		this.oriImgName = oriImgName;
 		this.imgName = imgName;
 		this.imgUrl = imgUrl;
 	}
+	
+	public void updateImg(Theme theme) {
+		this.name = theme.getName();
+		this.level = theme.getLevel();
+		this.horror = theme.getHorror();
+		this.imgUrl = theme.getImgUrl();
+	}
+	
+	
 	
 	
 }

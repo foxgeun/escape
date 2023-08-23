@@ -9,7 +9,12 @@ import org.modelmapper.ModelMapper;
 
 import com.escape.entity.Time;
 
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class TimeDto {
 	
 	

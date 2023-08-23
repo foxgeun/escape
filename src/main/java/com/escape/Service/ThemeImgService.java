@@ -2,6 +2,7 @@ package com.escape.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,11 @@ import lombok.RequiredArgsConstructor;
 public class ThemeImgService {
 	
 	private final ThemeImgRepository themeImgRepository;
-	private String themeImgLocation = "C:/theme";
+	
+	@Value("${themeImgLocation}")
+	private String themeImgLocation;
+	
+	
 	private final FileService fileService;
 	
 	
@@ -46,9 +51,36 @@ public class ThemeImgService {
 		
 	}
 	
+	public void updateThemeImg(ThemeImg themeImg, MultipartFile themeImgFile) throws Exception{
+		String oriImgName = themeImgFile.getOriginalFilename();
+		String imgName = "";
+		String imgUrl = "";
+		
+		if(!StringUtils.isEmpty(oriImgName)) {
+			imgName = fileService.uploadFile(themeImgLocation, 
+					oriImgName, themeImgFile.getBytes());
+			imgUrl = "/images/" + imgName;
+			}
+		
+		
+		
+		themeImg.updateThemeImg(oriImgName, imgName, imgUrl);
+
+		
+		
+		
+	}
+	
 	
 	public List<ThemeImg> getImgList(){
 		return themeImgRepository.getImgList();
 	}
+	
+	public List<ThemeImg> deleteImg(int id){
+		return themeImgRepository.SearchthemeIdList(id);
+	}
+
+
+
 	
 }

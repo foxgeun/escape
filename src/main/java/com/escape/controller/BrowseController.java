@@ -1,4 +1,5 @@
 package com.escape.controller;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,10 @@ public class BrowseController {
 		
 		
 		List<ThemeImg> imgList = themeImgRepository.getImgList();
+		LocalDate now = LocalDate.now();
+		
 
+		model.addAttribute("now" ,now);
 		model.addAttribute("imgList", imgList);
 		
 		

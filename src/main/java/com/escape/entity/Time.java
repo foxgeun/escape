@@ -1,5 +1,6 @@
 package com.escape.entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,5 +30,15 @@ public class Time {
 	String date;
 	
 	String theme;
+	
+	public void updateTime(String date) {
+		
+		if(this.date == null) {
+			this.date = date;
+		}else {
+			this.date += date + ", ";
+			
+		}	
+	}
 	
 }

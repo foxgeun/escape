@@ -25,7 +25,7 @@ public class SecurityConfig {
 				.requestMatchers("/assets/css/**","/assets/js/**","/assets/img/**","/assets/images/**", "/assets/webfonts/**","/vendor/bootstrap/**","/vendor/jquery/**").permitAll()
 				.requestMatchers("/","/members/**","/room/**", "/images/**").permitAll()
 				.requestMatchers("/favicon.ico", "/error").permitAll()
-				.requestMatchers("/browse","/details/**","/login","/join","/login/error","/streams","/reserve","/insert/new","/insert").permitAll() //로그인하지않고 접근가능한 사이트 설정
+				.requestMatchers("/browse","/details/**","/login","/join","/login/error","/streams/**","/reserve","/insert/new","/insert").permitAll() //로그인하지않고 접근가능한 사이트 설정
 				//'admin' 으로 시작하는 경로로 관리자만 접근가능하도록 설정
 				.requestMatchers("/admin/**").hasRole("ADMIN")
 				//그 외의 페이지는 모두 로그인(인증을 받아야한다.)

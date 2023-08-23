@@ -27,7 +27,19 @@ public interface ThemeRepository extends JpaRepository<Theme, String>{
 	@Query(value = "select * from theme where theme_id = ?1", nativeQuery = true)
 	List<Theme> SearchthemeIdList2(int id);
 	
+	
 
 	@Query(value = "select * from theme where theme_id = ?1", nativeQuery = true)
+	Theme SearchthemeIdList4(int id);
+	
+	@Modifying
+	@Query(value = "select * from theme where theme_id = ?1", nativeQuery = true)
+	List<Theme> SearchthemeIdList3(int id);
+	
+	
+	@Query(value = "select * from theme where theme_id = ?1", nativeQuery = true)
 	Theme updateList(int id);
+	
+
+	
 }

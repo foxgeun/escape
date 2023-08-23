@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDate;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,13 +46,17 @@ public class StreamController {
 	}
 	
 	@GetMapping(value = "/streams/{date}")
-	public String sub(ReserveDto reserveDto, Optional<Integer> page, Model model,Principal principal, @PathVariable("date") String date)throws Exception  {
+	public String sub(ReserveDto reserveDto, Optional<Integer> page, Model model, @PathVariable("date") String date)throws Exception  {
+		
+
 		
 		List<Theme> ThemeList = themeRepository.getThemeList();
-		List<Reserve> resList = reserveService.getresList();	
+		List<Reserve> resList = reserveService.getresList();
 		List<Reserve> btnList = reserveService.getbtnList();
 		List<Time> timeList = timeService.getTimeList();
+
 		List<Reserve> AA = new ArrayList<>();
+		
 		
 		for(Time time : timeList) {
 			AA.add(reserveService.getwpqkfList(date, time.getTime()));
@@ -60,7 +67,7 @@ public class StreamController {
 
 		
 		
-		System.out.println(now);
+
 		model.addAttribute("new" ,now);
 		model.addAttribute("AA", AA);
 		model.addAttribute("themeList", ThemeList);

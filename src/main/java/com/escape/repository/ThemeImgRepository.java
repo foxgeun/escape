@@ -17,4 +17,13 @@ public interface ThemeImgRepository extends JpaRepository<ThemeImg, String>{
 	@Modifying
 	@Query(value = "select * from theme_img where theme_img_id = ?1", nativeQuery = true)
 	List<ThemeImg> SearchthemeIdList(int id);
+	
+	
+	@Query(value = "select * from theme_img where theme_img_id = ?1", nativeQuery = true)
+	ThemeImg SearchthemeIdList2(int id);
+	
+	@Query(value = "select * from theme_img where theme_img_id = ?1", nativeQuery = true)
+	ThemeImg profileImg(int id);
+
+
 }

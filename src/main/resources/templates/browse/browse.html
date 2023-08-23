@@ -21,15 +21,15 @@
                 <div class="owl-features owl-carousel">
                   <div class="item" th:if="${!imgList.isEmpty()}" th:each="img, status: ${imgList}">
                     <div class="thumb">
-                     <a th:href="'/details/' + ${img.id}"> <img th:src="${img.ImgUrl}" alt=""></a>
+                     <a th:href="'/details/' + ${img.id}+ '/'+ ${now}"> <img th:src="${img.ImgUrl}" alt=""></a>
                       <div class="hover-effect">
                         <h6 >2.4K Played</h6>
                       </div>
                     </div>
                     <h4 th:text="${img.name}"><br><span>249K Downloads</span></h4>
                     <ul>
-                      <li><i class="fa fa-star"></i>[[${img.level}]] </li>
-                      <li><i class="fa fa-download"></i> 2.3M</li>
+                      <li><p style="line-height: 1.4;">level</p>[[${img.level}]] </li>
+                      <li><p style="line-height: 1.4;">horror</p>[[${img.horror}]] </li>
                     </ul>
                   </div>
                 
@@ -77,9 +77,7 @@
                     </div>
                   </li>
                 </ul>
-                <div class="text-button">
-                  <a href="profile.html">View All Games</a>
-                </div>
+
               </div>
             </div>
           </div>
@@ -126,9 +124,7 @@
                   </div>
                 </div>
                 <div class="col-lg-12">
-                  <div class="main-button">
-                    <a href="/profile">Go To Profile</a>
-                  </div>
+
                 </div>
               </div>
             </div>
