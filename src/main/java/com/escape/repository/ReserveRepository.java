@@ -4,15 +4,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.*;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import com.escape.entity.Reserve;
-import com.escape.entity.Time;
 
 
 
-public interface ReserveRepository extends JpaRepository<Reserve, Long>, QuerydslPredicateExecutor<Reserve>{
+public interface ReserveRepository extends JpaRepository<Reserve, Long>{
 
 	
 	@Query(value = "select * from reserve", nativeQuery = true)

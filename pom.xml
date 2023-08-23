@@ -18,6 +18,7 @@
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -60,15 +61,15 @@
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-devtools</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+</dependency>
 		<dependency>
      		<groupId>nz.net.ultraq.thymeleaf</groupId>
    			 <artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>shopmax</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 			<dependency>
 
 			<groupId>org.springframework.boot</groupId>
@@ -76,6 +77,15 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 
 		</dependency>
+		<dependency>
+    <groupId>com.querydsl</groupId>
+    <artifactId>querydsl-core</artifactId>
+	</dependency>
+	<dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>2.4.4</version> <!-- 여기에 원하는 ModelMapper 버전을 입력하세요 -->
+</dependency>
 	</dependencies>
 
 	<build>

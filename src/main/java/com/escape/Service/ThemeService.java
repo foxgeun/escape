@@ -17,7 +17,6 @@ import com.escape.repository.MemberRepository;
 import com.escape.repository.ThemeImgRepository;
 import com.escape.repository.ThemeRepository;
 import com.escape.repository.TimeRepository;
-import com.shopmax.entity.Order;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

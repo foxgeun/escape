@@ -31,7 +31,7 @@ public class EscapeController {
 			model.addAttribute("now" ,now);
 			model.addAttribute("imgList", imgList);
 			
-			return "/index";
+			return "index";
 		}
 		
 		
